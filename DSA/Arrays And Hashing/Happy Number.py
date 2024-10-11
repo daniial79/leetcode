@@ -1,16 +1,17 @@
 def is_happy(n: int) -> bool:
 
-    tracker: list[int] = [square_sum(n)]
-
-    while tracker[-1] != 1:
-        new_number = square_sum(tracker[-1])
+    cache: dict[int, bool] = {}
+    
+    current_step = square_sum(n)
+    
+    while current_step != 1:
         
-        if new_number in tracker:
+        if cache.get(current_step):
             return False
-            
-        tracker.append(new_number)
-
-
+        
+        cache[current_step] = True
+        current_step = square_sum(current_step)
+    
     return True
 
 
