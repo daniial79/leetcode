@@ -13,7 +13,12 @@ def length_of_last_word_v2(s: str) -> int:
     while s[i] != chr(SPACE_ASCII):
         i -= 1
         
-    # count length of last word
-    while s[i] != chr(SPACE_ASCII):
-        length += 1
-        i -= 1
+    # count length of the last word
+    try:
+        while s[i] != chr(SPACE_ASCII):
+            length += 1
+            i -= 1
+    except:
+        pass
+    
+    return length
